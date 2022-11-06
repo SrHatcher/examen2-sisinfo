@@ -1,5 +1,6 @@
 import {Sequelize} from 'sequelize-typescript';
 import * as dotenv from 'dotenv';
+import { Category } from '../models/category';
 
 
 class Connection{
@@ -15,7 +16,10 @@ class Connection{
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
             //port: 5432,
-            logging: false
+            logging: false,
+            models: [
+                Category
+            ]
         });
     }
 }
