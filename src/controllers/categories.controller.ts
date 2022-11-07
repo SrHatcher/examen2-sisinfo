@@ -30,7 +30,7 @@ export class CategoriesController{
     async getOne(req: Request, res: Response): Promise <Response>
     {
         const { id } = req.params;
-        const category = await categoriesService.getOne(+id);
+        const category = await categoriesService.getOne(id);
 
          return res.json(category);
     }
@@ -38,11 +38,11 @@ export class CategoriesController{
     {
         const payload = req.body;
 
-        let createCategoryDto = plainToClass(CreateCategoryDto, payload);
+        let contenidoPeticion = plainToClass(CreateCategoryDto, payload);
 
-        const errors = await validate(createCategoryDto);
+        const errors = await validate(contenidoPeticion);
 
-        if(errors.length > 0){
+        if(errors.length){
 
             console.log(errors);
             
@@ -51,7 +51,7 @@ export class CategoriesController{
             });
         }
 
-        return res.json(await categoriesService.create(createCategoryDto));
+        return res.json(await categoriesService.create(contenidoPeticion));
 
     }
 }

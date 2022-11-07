@@ -2,11 +2,7 @@ import{ Length, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateCategoryDto {
 
-    @Length(3,50, { message: "El nombre debe estar entre 3 y 50 caracteres"})
+    @Length(1,1, { message: "Solo puede enviar una letra a la vez!"})
     @IsNotEmpty()
-    name: string;
-
-    @Length(10,250)
-    @IsOptional()
-    description: string;
+    letter: string;
 }
