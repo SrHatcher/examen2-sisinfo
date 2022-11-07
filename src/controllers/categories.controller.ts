@@ -20,7 +20,7 @@ export class CategoriesController{
 
         this.router.post('/categories', this.create);
 
-        this.router.post('/categories/endpoint', this.createWord);
+        this.router.post('/categories/new', this.createWord);
 
     };
 
