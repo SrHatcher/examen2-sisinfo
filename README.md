@@ -30,9 +30,9 @@ Para realizar las peticiones a la API se deben crear 4 diferentes solicitudes en
 4. Peticion POST para crear el endpoint de agregar palabras. URL http://localhost:3000/api/categories/new . Aqui se agregaran
     las nuevas palabras, es necesario escribir la categoria a la que va a dirigir la palabra, de la siguiente manera:
 
-    {
-	    "id": "paises",
-	    "palabraNueva": "nicaragua"
-    }
+        {
+	        "id": "paises",
+	        "palabraNueva": "nicaragua"
+        }
 
     el campo id es la categoria seleccionada. Despues de enviar la peticion aparecera la lista de palabras que hay en el diccionario agrupadas en categorias. 
