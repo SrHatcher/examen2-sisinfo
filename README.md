@@ -1,9 +1,5 @@
 # Activos Fijos Backend
-
-Requisitos:
-1. Node.
-2. NPM.
-3. Postgres
+HOlaaaaaa
 
 Instrucciones
 
