@@ -6,3 +6,14 @@ export class CreateCategoryDto {
     @IsNotEmpty()
     letter: string;
 }
+
+export class CreateWordDto{
+    @Length(6,20, { message: "id Categoria no valido!"})
+    @IsNotEmpty()
+    id: string;
+
+    @Length(3,20, { message: "nombre de palabra no valido!"})
+    @IsNotEmpty()
+    palabraNueva: string;
+
+}

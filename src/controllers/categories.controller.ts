@@ -1,7 +1,7 @@
 import { plainToClass } from "class-transformer";
 import { validate } from "class-validator";
 import { Router, Request, Response } from "express";
-import { CreateCategoryDto } from "../dtos/create-category.dto";
+import { CreateCategoryDto, CreateWordDto } from "../dtos/create-category.dto";
 import categoriesService from "../services/categories.service";
 
 export class CategoriesController{
@@ -19,6 +19,9 @@ export class CategoriesController{
         this.router.get('/categories/:id', this.getOne);
 
         this.router.post('/categories', this.create);
+
+        this.router.post('/categories/endpoint', this.createWord);
+
     };
 
     async getList(req: Request, res: Response): Promise <Response> 
@@ -52,6 +55,27 @@ export class CategoriesController{
         }
 
         return res.json(await categoriesService.create(contenidoPeticion));
+
+    }
+
+    async createWord(req: Request, res: Response): Promise <Response>
+    {
+        const payload = req.body;
+
+        let contenidoPeticion = plainToClass(CreateWordDto, payload);
+
+        const errors = await validate(contenidoPeticion);
+
+        if(errors.length){
+
+            console.log(errors);
+            
+            return res.status(400).json({
+                "Validation-errors" : errors
+            });
+        }
+
+        return res.json(await categoriesService.createWord(contenidoPeticion));
 
     }
 }

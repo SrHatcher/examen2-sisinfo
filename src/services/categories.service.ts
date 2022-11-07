@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Index } from "sequelize-typescript";
-import { CreateCategoryDto } from '../dtos/create-category.dto';
+import { CreateCategoryDto, CreateWordDto } from '../dtos/create-category.dto';
 
 class CategoriesService{
 
@@ -22,6 +22,13 @@ class CategoriesService{
 
         return categorias;
     }
+
+    public async getDictionary(){
+        let categorias = Object.values(this.categories)
+
+        return categorias;
+    }
+
 
     public async getOne(categoryName: string){
         if(!this.currentCategory){
@@ -81,6 +88,32 @@ class CategoriesService{
         return output;
     }
  
+    public async createWord(createWordDto : CreateWordDto){
+
+        this.currentCategory = this.categories[createWordDto.id]
+        let output;
+
+        if(createWordDto.id == "frutas"){
+            this.categories.frutas.push(createWordDto.palabraNueva)
+          
+        }else if (createWordDto.id == "paises"){
+            this.categories.paises.push(createWordDto.palabraNueva)
+         
+        }else{
+            output = [
+                `Debe ingresar un nombre de categoria existente ${this.currentCategory}`,
+            ]
+        }
+
+        output = [
+            `Categorias`,
+            `frutas: ${this.categories.frutas}`,
+            `paises: ${this.categories.paises}`
+        ]
+
+        return output;
+
+    }
 
     public async create(contenidoPeticion: CreateCategoryDto){
         const letra = contenidoPeticion.letter
@@ -108,7 +141,9 @@ class CategoriesService{
         }
 
         return this.getOne(this.currentCategory);
-      }          
+      }    
+      
+   
 }
 
 export default new CategoriesService();
