@@ -19,10 +19,6 @@ export class CategoriesController{
         this.router.get('/categories/:id', this.getOne);
 
         this.router.post('/categories', this.create);
-
-        this.router.patch('/categories/:id', this.update);
-
-        this.router.delete('/categories', this.delete);
     };
 
     async getList(req: Request, res: Response): Promise <Response> 
@@ -58,14 +54,4 @@ export class CategoriesController{
         return res.json(await categoriesService.create(createCategoryDto));
 
     }
-    async update(req: Request, res: Response): Promise <Response>
-    {
-         return res.json();
-    }
-    async delete(req: Request, res: Response): Promise <Response>
-    { 
-        return res.json();
-    }
-
-
 }

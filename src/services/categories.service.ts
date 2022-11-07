@@ -29,24 +29,7 @@ class CategoriesService{
         });
 
         return this.getOne(id);
-      }
-
-     public async update(req: Request, res: Response): Promise<Response> {
-       
-        return res.json({
-            "Categories" : "Esto crea una categoria",
-            "Metodo": "GET"
-          });
-      }
-
-      
-     public async delete(req: Request, res: Response): Promise<Response> {
-        return res.json({
-            "Categories" : "Esto borra una categorias",
-            "Metodo": "GET"
-        });
-      }
-          
+      }          
 }
 
 export default new CategoriesService();
